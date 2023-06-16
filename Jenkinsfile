@@ -1,31 +1,21 @@
 pipeline{
-    agent {
+    agent{
         docker {
             image 'ubuntu:latest'
-            args  '-v root'
         }
     }
-    stages{
-        stage('First Stage'){
-            steps{
-                sh'Develop stage'
-            }
-        }
 
-        stage('Build Stage'){
+    stages{
+        stage('test'){
             when {
                 branch 'dev'
             }
-            steps{
-                sh ''' 
-                  apt-get update
-                  apt-get -y install python3
-                  pip list
-                  python3 -m pip install -e .
-                  coverage run -m pytest --capture=no --junitxml=report.xml
-                '''
-            }
         }
-        
+        steps{
+            sh '''
+              apt-get update
+              apt-get install python3 -y
+            '''
+        }
     }
 }
