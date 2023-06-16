@@ -14,8 +14,8 @@ pipeline{
                 sh '''
                 apt-get update
                 apt-get install python3 -y
-		python3 -m pip install -e .
-		pip list
+		python3 -m pip3 install -e .
+		pip3 list
 		coverage run -m pytest -v --junitxml=report.xml
                 '''
             }
