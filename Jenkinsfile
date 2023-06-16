@@ -5,10 +5,6 @@ pipeline{
             args  '-v root'
         }
     }
-
-    environment {
-        now = sh(returnStdout: true, script: "date '+%Y%m%d'")
-    }
     stages{
         stage('First Stage'){
             steps{
