@@ -1,8 +1,7 @@
 pipeline{
-    agent any{
-        docker{
-            image 'ubuntu:latest',
-            args '-v root'
+    agent {
+        docker {
+            image 'ubuntu:latest'
         }
     }
     stages{
