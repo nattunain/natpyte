@@ -2,7 +2,7 @@ pipeline{
     agent{
         docker {
             image 'ubuntu:latest'
-            args  '-v root'
+            args  '-u root'
         }
     }
     stages {
