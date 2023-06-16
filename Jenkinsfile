@@ -19,7 +19,7 @@ pipeline{
                 sh ''' 
                   apt-get update
                   apt-get -y install python3
-                  pip3 install -e .
+                  python3 -m pip install -e .
                   coverage run -m pytest --capture=no --junitxml=report.xml
                 '''
             }
