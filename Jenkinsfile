@@ -11,16 +11,19 @@ pipeline{
             }
         }
 
-        stage('Test Stage'){
+        stage('Build Stage'){
+            when {
+                branch 'dev'
+            }
             steps{
-                sh 'Test Stage'
+                sh ''' 
+                  apt-get update
+                  apt-get -y install python3
+                  pip3 install -e .
+                  coverage run -m pytest --capture=no --junitxml=report.xml
+                '''
             }
         }
-
-        stage('Deploy Stage'){
-            steps{
-                sh 'Deploy Stage'
-            }
-        }
+        
     }
 }
